@@ -16,7 +16,7 @@ pygame.display.set_icon(icon)
 
 #player
 playerImg = pygame.image.load('assets/player-ship.png')
-playerX, playerY = 370, 480
+playerX, playerY = 370, HEIGHT-100
 playerXOffset = 0.25
 
 def player(x,y):
@@ -25,13 +25,15 @@ def player(x,y):
 
 #enemy
 enemyImg = pygame.image.load('assets/enemy.png')
-enemyX = random.randint(0,800)
+enemyX = random.randint(0,WIDTH)
 enemyY = random.randint(50, 150)
+enemyXOffset = 0.25
 
 def enemy(x,y):
     screen.blit(enemyImg, (x,y))
 
 playerXChange = 0 #pixels
+enemyXChange = enemyXOffset #pixels
 #game loop
 running = True
 while running:
@@ -54,12 +56,20 @@ while running:
 
     playerX += playerXChange
 
-    #adding boundary
+    #check player boundary
     if playerX < 0:
         playerXChange = 0
     if playerX+64 > WIDTH: #64 is player image width
         playerXChange = 0 
     player(playerX, playerY)
+
+    enemyX += enemyXChange
+
+    #check enemy boundary
+    if enemyX < 0:
+        enemyXChange = enemyXOffset
+    if enemyX+64 > WIDTH: #64 is player image width
+        enemyXChange = -enemyXOffset
 
     enemy(enemyX, enemyY)
 
