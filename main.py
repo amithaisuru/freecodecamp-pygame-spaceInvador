@@ -12,13 +12,25 @@ pygame.display.set_caption("Space Invadors")
 icon = pygame.image.load('assets/icon.png')
 pygame.display.set_icon(icon)
 
+#player
+playerImg = pygame.image.load('assets/player-ship.png')
+playerX, playerY = 370, 480
+
+def player():
+    screen.blit(playerImg, (playerX, playerY))
+    #blit method draws the image
+
 #game loop
 running = True
 while running:
+     #screen fill
+    screen.fill((0,0,0))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    #screen fill
-    screen.fill((0,0,0))
+   
+    player()
+
     pygame.display.update()
