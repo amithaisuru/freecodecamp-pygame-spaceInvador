@@ -43,6 +43,12 @@ while running:
                 playerXChange = 0
 
     playerX += playerXChange
+
+    #adding boundary
+    if playerX < 0:
+        playerXChange = 0
+    if playerX+64 > WIDTH: #64 is player image width
+        playerXChange = 0 
     player(playerX, playerY)
 
     pygame.display.update()
