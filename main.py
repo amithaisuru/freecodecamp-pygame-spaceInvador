@@ -34,6 +34,19 @@ enemyYOffset = 30
 def enemy(x,y):
     screen.blit(enemyImg, (x,y))
 
+
+#bullet
+bulletImg = pygame.image.load('assets/bullet.png')
+bulletX = playerX
+bulletY = playerY
+bulletYOffset = 10
+bulletState = "ready" #ready - we can't see on the screen, fire - we can see on the screen
+    
+def fireBullet(x,y):
+    global bulletState
+    bulletState = "fire"
+    screen.blit(bulletImg, (x+16, y+10))
+
 playerXChange = 0 #pixels
 enemyXChange = enemyXOffset #pixels
 #game loop
@@ -54,12 +67,14 @@ while running:
                 playerXChange = -playerXOffset
             if event.key == pygame.K_RIGHT:
                 playerXChange = playerXOffset
+            if event.key == pygame.K_SPACE:
+                fireBullet(bulletX, bulletY)
         if event.type == pygame.KEYUP: #is a key released
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerXChange = 0
 
+    #player
     playerX += playerXChange
-
     #check player boundary
     if playerX < 0:
         playerXChange = 0
@@ -67,8 +82,8 @@ while running:
         playerXChange = 0 
     player(playerX, playerY)
 
+    #enemy
     enemyX += enemyXChange
-
     #check enemy boundary
     if enemyX < 0:
         enemyXChange = enemyXOffset
@@ -76,8 +91,11 @@ while running:
     if enemyX+64 > WIDTH: #64 is player image width
         enemyXChange = -enemyXOffset
         enemyY+=enemyYOffset
-
     enemy(enemyX, enemyY)
 
+    #bullet
+    if bulletState is "fire":
+        fireBullet(bulletX, bulletY)
+        bulletY -= bulletYOffset
 
     pygame.display.update()
