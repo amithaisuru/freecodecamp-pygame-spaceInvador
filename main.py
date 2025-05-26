@@ -27,8 +27,8 @@ def player(x,y):
 
 #enemy
 enemyImg = pygame.image.load('assets/enemy.png')
-enemyX = random.randint(0,WIDTH)
-enemyY = random.randint(50, 150)
+enemyX = random.randint(0,WIDTH-85)
+enemyY = random.randint(50,100)
 enemyXOffset = 1.5
 enemyYOffset = 30
 
@@ -77,7 +77,7 @@ while running:
             if event.key == pygame.K_RIGHT:
                 playerXChange = playerXOffset
             if event.key == pygame.K_SPACE:
-                if bulletState is "ready":
+                if bulletState == "ready":
                     bulletX = playerX
                     fireBullet(bulletX, bulletY)
         if event.type == pygame.KEYUP: #is a key released
@@ -105,7 +105,7 @@ while running:
     enemy(enemyX, enemyY)
 
     #bullet
-    if bulletState is "fire":
+    if bulletState == "fire":
         fireBullet(bulletX, bulletY)
         bulletY -= bulletYOffset
     #bullet reset
@@ -116,6 +116,9 @@ while running:
     #bullet collision with enemy
     if isCollision(bulletX, bulletY, enemyX, enemyY):
         bulletY = playerY
+        enemyX = random.randint(0,WIDTH)
+        enemyY = random.randint(50, 100)
+        enemy(enemyX, enemyY)
         bulletState = "ready"
         score += 1
         print(score)
