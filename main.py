@@ -12,12 +12,13 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 #title and icon
 pygame.display.set_caption("Space Invadors")
 icon = pygame.image.load('assets/icon.png')
+bgImg = pygame.image.load('assets/background.png')
 pygame.display.set_icon(icon)
 
 #player
 playerImg = pygame.image.load('assets/player-ship.png')
 playerX, playerY = 370, HEIGHT-100
-playerXOffset = 0.25
+playerXOffset = 2
 
 def player(x,y):
     screen.blit(playerImg, (x, y))
@@ -27,7 +28,7 @@ def player(x,y):
 enemyImg = pygame.image.load('assets/enemy.png')
 enemyX = random.randint(0,WIDTH)
 enemyY = random.randint(50, 150)
-enemyXOffset = 0.25
+enemyXOffset = 1.5
 enemyYOffset = 30
 
 def enemy(x,y):
@@ -40,6 +41,8 @@ running = True
 while running:
      #screen fill
     screen.fill((0,0,0))
+    #background image
+    screen.blit(bgImg,(0,0))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
