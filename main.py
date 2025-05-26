@@ -21,6 +21,13 @@ def player(x,y):
     screen.blit(playerImg, (x, y))
     #blit method draws the image
 
+#enemy
+enemyImg = pygame.image.load('assets/enemy.png')
+enemyX, enemyY = 370, 50
+
+def enemy(x,y):
+    screen.blit(enemyImg, (x,y))
+
 playerXChange = 0 #pixels
 #game loop
 running = True
@@ -49,6 +56,10 @@ while running:
         playerXChange = 0
     if playerX+64 > WIDTH: #64 is player image width
         playerXChange = 0 
+
     player(playerX, playerY)
+
+    enemy(enemyX, enemyY)
+
 
     pygame.display.update()
