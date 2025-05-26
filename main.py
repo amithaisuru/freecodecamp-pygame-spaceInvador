@@ -15,11 +15,13 @@ pygame.display.set_icon(icon)
 #player
 playerImg = pygame.image.load('assets/player-ship.png')
 playerX, playerY = 370, 480
+playerXOffset = 0.25
 
 def player(x,y):
     screen.blit(playerImg, (x, y))
     #blit method draws the image
 
+playerXChange = 0 #pixels
 #game loop
 running = True
 while running:
@@ -33,13 +35,14 @@ while running:
         # if keystroke is pressed check whether it is right or left
         if event.type == pygame.KEYDOWN: #is a key prssed
             if event.key == pygame.K_LEFT: #check if the pressd key is left arrow
-                print("left pressed")
+                playerXChange = -playerXOffset
             if event.key == pygame.K_RIGHT:
-                print("right pressed")
+                playerXChange = playerXOffset
         if event.type == pygame.KEYUP: #is a key released
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                print("keys released")
+                playerXChange = 0
 
+    playerX += playerXChange
     player(playerX, playerY)
 
     pygame.display.update()
