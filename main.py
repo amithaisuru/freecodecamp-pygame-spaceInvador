@@ -28,6 +28,7 @@ enemyImg = pygame.image.load('assets/enemy.png')
 enemyX = random.randint(0,WIDTH)
 enemyY = random.randint(50, 150)
 enemyXOffset = 0.25
+enemyYOffset = 30
 
 def enemy(x,y):
     screen.blit(enemyImg, (x,y))
@@ -68,8 +69,10 @@ while running:
     #check enemy boundary
     if enemyX < 0:
         enemyXChange = enemyXOffset
+        enemyY+=enemyYOffset
     if enemyX+64 > WIDTH: #64 is player image width
         enemyXChange = -enemyXOffset
+        enemyY+=enemyYOffset
 
     enemy(enemyX, enemyY)
 
