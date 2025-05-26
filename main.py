@@ -1,3 +1,5 @@
+import random
+
 import pygame
 
 WIDTH, HEIGHT = 800, 600
@@ -23,7 +25,8 @@ def player(x,y):
 
 #enemy
 enemyImg = pygame.image.load('assets/enemy.png')
-enemyX, enemyY = 370, 50
+enemyX = random.randint(0,800)
+enemyY = random.randint(50, 150)
 
 def enemy(x,y):
     screen.blit(enemyImg, (x,y))
@@ -56,7 +59,6 @@ while running:
         playerXChange = 0
     if playerX+64 > WIDTH: #64 is player image width
         playerXChange = 0 
-
     player(playerX, playerY)
 
     enemy(enemyX, enemyY)
