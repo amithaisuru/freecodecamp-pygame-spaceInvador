@@ -68,8 +68,9 @@ while running:
             if event.key == pygame.K_RIGHT:
                 playerXChange = playerXOffset
             if event.key == pygame.K_SPACE:
-                bulletX = playerX
-                fireBullet(bulletX, bulletY)
+                if bulletState is "ready":
+                    bulletX = playerX
+                    fireBullet(bulletX, bulletY)
         if event.type == pygame.KEYUP: #is a key released
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerXChange = 0
