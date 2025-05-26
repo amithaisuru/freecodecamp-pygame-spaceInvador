@@ -27,7 +27,7 @@ def player(x,y):
 
 #enemy
 enemyImg = pygame.image.load('assets/enemy.png')
-enemyX = random.randint(0,WIDTH-85)
+enemyX = random.randint(20,WIDTH-85)
 enemyY = random.randint(50,100)
 enemyXOffset = 1.5
 enemyYOffset = 30
@@ -116,7 +116,7 @@ while running:
     #bullet collision with enemy
     if isCollision(bulletX, bulletY, enemyX, enemyY):
         bulletY = playerY
-        enemyX = random.randint(0,WIDTH)
+        enemyX = random.randint(20,WIDTH-85)
         enemyY = random.randint(50, 100)
         enemy(enemyX, enemyY)
         bulletState = "ready"
