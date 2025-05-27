@@ -30,3 +30,7 @@ To download and run the pre-built executable:
 2. Extract the zip file to a folder on your computer.
 3. Go to `space invadors` folder
 4. Double-click `game.exe` to run the game.
+
+## How to Play
+Move : Left and Right Arrow keys
+Shoot : Spacebar
