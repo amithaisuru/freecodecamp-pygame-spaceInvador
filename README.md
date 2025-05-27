@@ -23,18 +23,19 @@ To clone the repository and run the game from source:
    ```bash
    python main.py
    ```
-4. Build exe file
+## Building exe file
+1. Run following command
    ```bash
-   pyinstaller --onefile --windowed --add-data "assets;assets" --distpath "." "main.py"
+   pyinstaller --onefile --windowed --add-data "assets;assets" --distpath "." --name "SpaceInvadersGame" "main.py"
    ```
-   
+2. Run `SpaceInvadersGame.exe` file and play
 
 ## Download and Run the Executable
 To download and run the pre-built executable:
 1. Download the zip file from [this link](https://github.com/amithaisuru/freecodecamp-pygame-spaceInvador/blob/main/space%20inavdors.zip).
 2. Extract the zip file to a folder on your computer.
 3. Go to `space invadors` folder
-4. Double-click `game.exe` to run the game.
+4. Double-click `SpaceInvadersGame.exe` to run the game.
 
 ## How to Play
 Move : Left and Right Arrow keys  
