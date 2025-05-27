@@ -71,20 +71,31 @@ def fireBullet(x,y):
     bulletState = "fire"
     screen.blit(bulletImg, (x+16, y+10))
 
-#collidion
+#collision
 def isCollision(enemyX, enemyY, bulletX, bulletY):
     distance = math.sqrt(math.pow((enemyX-bulletX),2) + math.pow((enemyY-bulletY),2))
     if distance < 27:
         return True
     return False
 
+#gameover logic
+def isGameOver(playerX, playerY, enemyX, enemyY):
+    print(enemyY, playerY)
+    if (enemyY >= playerY-64) and (playerX-64 <= enemyX <= playerX+64):
+        return True
+#game over text
+gameOverFont = pygame.font.Font('assets/fonts/Korcy.ttf', 72)
+def showGameOverText(x,y):
+    gameOverText = gameOverFont.render("Score: " + str(scoreValue), True, (0,255,255))
+    screen.blit(gameOverText, (x,y))
+    
 #score
 scoreValue = 0
-font = pygame.font.Font('assets/fonts/Korcy.ttf', 32) #32 is the size
+scoreFont = pygame.font.Font('assets/fonts/Korcy.ttf', 32) #32 is the size
 textX, textY = 10, 10
 
 def showScore(x,y):
-    score = font.render("Score: " + str(scoreValue), True, (255,255,255))
+    score = scoreFont.render("Score: " + str(scoreValue), True, (255,255,255))
     screen.blit(score, (x,y))
 
 #game loop
@@ -146,6 +157,12 @@ while running:
             enemy(enemyX[i], enemyY[i], i)
             bulletState = "ready"
             scoreValue += 1
+        
+        if isGameOver(playerX, playerY, enemyX[i], enemyY[i]):
+            for j in range(numOfEnemies):
+                enemyY[j] = HEIGHT + 500
+            showGameOverText(WIDTH/2, HEIGHT/2)
+            break
 
         enemy(enemyX[i], enemyY[i], i)
 
