@@ -2,8 +2,11 @@
 
 A classic Space Invaders game built with Pygame. Control a spaceship to shoot down waves of enemy ships, avoid collisions, and achieve a high score in this retro-style arcade game.
 
-![Gameplay Screenshot 1](screenshots/ss1.png)
-![Gameplay Screenshot 2](screenshots/ss2.png)
+## Screenshots
+<div style="display: flex; justify-content: space-around;">
+    <img src="screenshots/ss1.png" alt="Gameplay Screenshot 1" width="400" height="300">
+    <img src="screenshots/ss2.png" alt="Gameplay Screenshot 2" width="400" height="300">
+</div>
 
 ## Clone the Repository
 To clone the repository and run the game from source:
