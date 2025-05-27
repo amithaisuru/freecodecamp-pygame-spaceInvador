@@ -80,14 +80,16 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
 
 #gameover logic
 def isGameOver(playerX, playerY, enemyX, enemyY):
-    print(enemyY, playerY)
     if (enemyY >= playerY-64) and (playerX-64 <= enemyX <= playerX+64):
         return True
 #game over text
 gameOverFont = pygame.font.Font('assets/fonts/Korcy.ttf', 72)
 def showGameOverText(x,y):
-    gameOverText = gameOverFont.render("Score: " + str(scoreValue), True, (0,255,255))
-    screen.blit(gameOverText, (x,y))
+    gameOverText = gameOverFont.render("Game Over", True, (255,255,0))
+    scoreText = gameOverFont.render("Score: " + str(scoreValue), True, (255,255,0))
+
+    screen.blit(scoreText, (x-50,y))
+    screen.blit(gameOverText, (x-100,y+100))
     
 #score
 scoreValue = 0
@@ -160,9 +162,7 @@ while running:
         
         if isGameOver(playerX, playerY, enemyX[i], enemyY[i]):
             for j in range(numOfEnemies):
-                enemyY[j] = HEIGHT + 500
-            showGameOverText(WIDTH/2, HEIGHT/2)
-            break
+                running = False
 
         enemy(enemyX[i], enemyY[i], i)
 
@@ -175,5 +175,17 @@ while running:
         bulletY = playerY
         bulletState = "ready"
     
+
+    pygame.display.update()
+
+running = True
+while running:
+    screen.blit(bgImg,(0,0))
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    
+    showGameOverText(WIDTH/2-100, HEIGHT/2-100)
 
     pygame.display.update()
