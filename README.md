@@ -6,7 +6,7 @@ A classic Space Invaders game built with Pygame. Control a spaceship to shoot do
 To clone the repository and run the game from source:
 1. Open a terminal and run:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/amithaisuru/freecodecamp-pygame-spaceInvador
    cd freecodecamp-pygame
    ```
 2. Install dependencies:
@@ -15,7 +15,7 @@ To clone the repository and run the game from source:
    ```
 3. Run the game:
    ```bash
-   python space_invaders.py
+   python main.py
    ```
 
 ## Download and Run the Executable
