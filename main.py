@@ -63,15 +63,25 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
         return True
     return False
 
-playerXChange = 0 #pixels
-score = 0
+#score
+scoreValue = 0
+font = pygame.font.Font('freesansbold.ttf', 32) #32 is the size
+textX, textY = 10, 10
+
+def showScore(x,y):
+    score = font.render("Score: " + str(scoreValue), True, (255,255,255))
+    screen.blit(score, (x,y))
+
 #game loop
+playerXChange = 0 #pixels
 running = True
 while running:
      #screen fill
     screen.fill((0,0,0))
     #background image
     screen.blit(bgImg,(0,0))
+    #score
+    showScore(textX, textY)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -118,8 +128,7 @@ while running:
             enemyY[i] = random.randint(50, 100)
             enemy(enemyX[i], enemyY[i], i)
             bulletState = "ready"
-            score += 1
-            print(score)
+            scoreValue += 1
 
         enemy(enemyX[i], enemyY[i], i)
 
