@@ -1,4 +1,5 @@
 import math
+import os
 import random
 
 import pygame
@@ -13,30 +14,37 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 #title and icon
 pygame.display.set_caption("Space Invadors")
-icon = pygame.image.load('assets/icon.png')
-bgImg = pygame.image.load('assets/background.png')
+iconPath = os.path.join('assets','icon.png')
+icon = pygame.image.load(iconPath)
+bgImgPath = os.path.join('assets', 'background.png')
+bgImg = pygame.image.load(bgImgPath)
 pygame.display.set_icon(icon)
 
 #audio
 #background
-mixer.music.load('assets/sounds/background.mp3')
+backgroundPath = os.path.join('assets', 'sounds', 'background.mp3')
+mixer.music.load(backgroundPath)
 mixer.music.set_volume(0.2)
 mixer.music.play(-1) #-1 means play on loop
 
 #shoot
-shootSound = mixer.Sound('assets/sounds/laser.mp3')
+shootSoundPath = os.path.join('assets', 'sounds', 'laser.mp3')
+shootSound = mixer.Sound(shootSoundPath)
 shootSound.set_volume(1)
 
 #blast enemy
-enemyBlastSound = mixer.Sound('assets/sounds/pop.mp3')
+enemyBlastSoundPath = os.path.join('assets', 'sounds', 'pop.mp3')
+enemyBlastSound = mixer.Sound(enemyBlastSoundPath)
 enemyBlastSound.set_volume(0.5)
 
 #enemy hits player
-blastSound = mixer.Sound('assets/sounds/explode.mp3')
+blastSoundPath = os.path.join('assets', 'sounds', 'explode.mp3')
+blastSound = mixer.Sound(blastSoundPath)
 blastSound.set_volume(1)
 
 #player
-playerImg = pygame.image.load('assets/player-ship.png')
+playerImgPath = os.path.join('assets', 'player-ship.png')
+playerImg = pygame.image.load(playerImgPath)
 playerX, playerY = 370, HEIGHT-100
 playerXOffset = 3.5
 
@@ -52,9 +60,10 @@ enemyXChange = []
 numOfEnemies = 16
 enemyXOffset = 2.5
 enemyYOffset = 35
+enemyImgPath = os.path.join('assets', 'enemy.png')
 
 for i in range(numOfEnemies):
-    enemyImg.append(pygame.image.load('assets/enemy.png'))
+    enemyImg.append(pygame.image.load(enemyImgPath))
     enemyX.append(random.randint(20,WIDTH-85))
     enemyY.append(random.randint(50,250))
     enemyXChange.append(enemyXOffset)
@@ -64,7 +73,8 @@ def enemy(x,y,i):
 
 
 #bullet
-bulletImg = pygame.image.load('assets/bullet.png')
+bulletImgPath = os.path.join('assets', 'bullet.png')
+bulletImg = pygame.image.load(bulletImgPath)
 bulletX = playerX
 bulletY = playerY
 bulletYOffset = 17
@@ -87,7 +97,8 @@ def isGameOver(playerX, playerY, enemyX, enemyY):
     if (enemyY >= playerY-64) and (playerX-64 <= enemyX <= playerX+64):
         return True
 #game over text
-gameOverFont = pygame.font.Font('assets/fonts/Korcy.ttf', 72)
+fontPath = os.path.join('assets', 'fonts', 'Korcy.ttf')
+gameOverFont = pygame.font.Font(fontPath, 72)
 def showGameOverText(x,y):
     gameOverText = gameOverFont.render("Game Over", True, (255,255,0))
     scoreText = gameOverFont.render("Score: " + str(scoreValue), True, (255,255,0))
@@ -97,7 +108,7 @@ def showGameOverText(x,y):
     
 #score
 scoreValue = 0
-scoreFont = pygame.font.Font('assets/fonts/Korcy.ttf', 32) #32 is the size
+scoreFont = pygame.font.Font(fontPath, 32) #32 is the size
 textX, textY = 10, 10
 
 def showScore(x,y):
