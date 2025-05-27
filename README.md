@@ -32,5 +32,5 @@ To download and run the pre-built executable:
 4. Double-click `game.exe` to run the game.
 
 ## How to Play
-Move : Left and Right Arrow keys
+Move : Left and Right Arrow keys  
 Shoot : Spacebar
