@@ -17,12 +17,17 @@ To clone the repository and run the game from source:
    ```
 2. Install dependencies:
    ```bash
-   pip install pygame
+   pip install -r requirements.txt
    ```
 3. Run the game:
    ```bash
    python main.py
    ```
+4. Build exe file
+   ```bash
+   pyinstaller --onefile --windowed --add-data "assets;assets" --distpath "." "main.py"
+   ```
+   
 
 ## Download and Run the Executable
 To download and run the pre-built executable:
