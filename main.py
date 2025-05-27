@@ -38,7 +38,7 @@ blastSound.set_volume(1)
 #player
 playerImg = pygame.image.load('assets/player-ship.png')
 playerX, playerY = 370, HEIGHT-100
-playerXOffset = 2
+playerXOffset = 3.5
 
 def player(x,y):
     screen.blit(playerImg, (x, y))
@@ -49,14 +49,14 @@ enemyImg = []
 enemyX = []
 enemyY = []
 enemyXChange = []
-numOfEnemies = 10
-enemyXOffset = 1.5
-enemyYOffset = 30
+numOfEnemies = 16
+enemyXOffset = 2.5
+enemyYOffset = 35
 
 for i in range(numOfEnemies):
     enemyImg.append(pygame.image.load('assets/enemy.png'))
     enemyX.append(random.randint(20,WIDTH-85))
-    enemyY.append(random.randint(50,100))
+    enemyY.append(random.randint(50,250))
     enemyXChange.append(enemyXOffset)
 
 def enemy(x,y,i):
@@ -67,7 +67,7 @@ def enemy(x,y,i):
 bulletImg = pygame.image.load('assets/bullet.png')
 bulletX = playerX
 bulletY = playerY
-bulletYOffset = 10
+bulletYOffset = 17
 bulletState = "ready" #ready - we can't see on the screen, fire - we can see on the screen
     
 def fireBullet(x,y):
