@@ -29,7 +29,11 @@ shootSound.set_volume(1)
 
 #blast enemy
 enemyBlastSound = mixer.Sound('assets/sounds/pop.mp3')
-enemyBlastSound.set_volume(1)
+enemyBlastSound.set_volume(0.5)
+
+#enemy hits player
+blastSound = mixer.Sound('assets/sounds/explode.mp3')
+blastSound.set_volume(1)
 
 #player
 playerImg = pygame.image.load('assets/player-ship.png')
@@ -162,6 +166,7 @@ while running:
         
         if isGameOver(playerX, playerY, enemyX[i], enemyY[i]):
             for j in range(numOfEnemies):
+                blastSound.play()
                 running = False
 
         enemy(enemyX[i], enemyY[i], i)
