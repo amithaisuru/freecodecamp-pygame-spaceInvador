@@ -65,7 +65,7 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
 
 #score
 scoreValue = 0
-font = pygame.font.Font('freesansbold.ttf', 32) #32 is the size
+font = pygame.font.Font('assets/fonts/Korcy.ttf', 32) #32 is the size
 textX, textY = 10, 10
 
 def showScore(x,y):
