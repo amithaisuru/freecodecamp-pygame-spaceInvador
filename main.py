@@ -46,7 +46,7 @@ blastSound.set_volume(1)
 playerImgPath = os.path.join('assets', 'player-ship.png')
 playerImg = pygame.image.load(playerImgPath)
 playerX, playerY = 370, HEIGHT-100
-playerXOffset = 3.5
+playerXOffset = 5
 
 def player(x,y):
     screen.blit(playerImg, (x, y))
@@ -58,7 +58,7 @@ enemyX = []
 enemyY = []
 enemyXChange = []
 numOfEnemies = 16
-enemyXOffset = 2.5
+enemyXOffset = 4
 enemyYOffset = 35
 enemyImgPath = os.path.join('assets', 'enemy.png')
 
@@ -77,7 +77,7 @@ bulletImgPath = os.path.join('assets', 'bullet.png')
 bulletImg = pygame.image.load(bulletImgPath)
 bulletX = playerX
 bulletY = playerY
-bulletYOffset = 17
+bulletYOffset = 28
 bulletState = "ready" #ready - we can't see on the screen, fire - we can see on the screen
     
 def fireBullet(x,y):
@@ -115,10 +115,13 @@ def showScore(x,y):
     score = scoreFont.render("Score: " + str(scoreValue), True, (255,255,255))
     screen.blit(score, (x,y))
 
+FPS = 60
+clock = pygame.time.Clock()
 #game loop
 playerXChange = 0 #pixels
 running = True
 while running:
+    clock.tick(FPS) #60 FPS
      #screen fill
     screen.fill((0,0,0))
     #background image
