@@ -32,7 +32,7 @@ To clone the repository and run the game from source:
 
 ## Download and Run the Executable
 To download and run the pre-built executable:
-1. Download the zip file from [this link](https://github.com/amithaisuru/freecodecamp-pygame-spaceInvador/blob/main/space%20inavdors.zip).
+1. Download the zip file from [this link](https://github.com/amithaisuru/freecodecamp-pygame-spaceInvador/blob/main/spaceInvadersGame.zip).
 2. Extract the zip file to a folder on your computer.
 3. Go to `space invadors` folder
 4. Double-click `SpaceInvadersGame.exe` to run the game.
